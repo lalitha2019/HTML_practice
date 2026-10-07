@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drop downs and color example</title>
+    
+    <style>
+        html {background-color: antiquewhite; }
+        select {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            text-align-last: center;    /* Ensures centering in Chrome, Firefox, and Edge */
+        }
+        div {
+            background-color: burlywood;
+            font-size: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Colors (రంగులు)</h1>
+    
+    <form id="select_options">
+        <label for="color_select">Choose a color:</label>
+	        <select name="color_select" id="color_select" required>
+  		    <option value="" selected disabled>-- Please select --</option>
+	        </select>
+        &emsp;
+        <button type="button" onclick="show_word()">Show Telugu word</button>
+        
+    </form>
+    <p></p>
+    <div id="show_word"><span id="word"></span></div>
+    </div>
+    <script>
+     // 1. Define your data array
+    const color_vals = ['Red', 'Blue', 'Green', 'Yellow', 'Orange', 'Black', 'White', 'Brown', 'Purple', 'Pink']
+    const word_vals = ['ఎరుపు', 'నీలం', 'ఆకుపచ్చ', 'పసుపు', 'నారింజ రంగు', 'నలుపు', 'తెలుపు', 'గోధుమ రంగు', 'ఊదా రంగు', 'గులాబీ రంగు']
+    const color_select_element = document.getElementById("color_select");
+    
+    function populate_options(select_element, options_list){
+        // Clear existing dynamic options (keeping the placeholder index 0)
+	    select_element.length = 1; 
+        //loop through options_list
+        options_list.forEach(option_val => {
+ 		const option = document.createElement("option");
+        // Assign value and text content
+ 		option.value = option_val
+		option.textContent = option_val;
+        // Append the option to the dropdown list
+		select_element.appendChild(option);
+        }); 
+    }
+    populate_options(color_select_element, color_vals)
+
+    function show_word() {
+        color_index = color_vals.indexOf(color_select_element.value)
+        document.getElementById("word").innerHTML = (word_vals[color_index])
+        document.getElementById("word").style.color=color_select_element.value
+    }   
+    
+    </script>
+</body>
+</html>

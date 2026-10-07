@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drop downs example</title>
+    
+    <style>
+        select {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            text-align-last: center;    /* Ensures centering in Chrome, Firefox, and Edge */
+        }
+        div {
+            background-color: aqua;
+            font-size: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Telugu vowels (అచ్చులు)</h1>
+    
+    <form id="select_options">
+        <label for="letter_select">Choose a letter:</label>
+	        <select name="letter_select" id="letter_select" required>
+  		    <option value="" selected disabled>-- Please select --</option>
+	        </select>
+        &emsp;
+        <button type="button" onclick="show_word()">Show word</button>
+        
+    </form>
+    <p></p>
+    <div id="show_word"></div>
+    </div>
+    <script>
+     // 1. Define your data array
+    const letter_vals = ['అ','ఆ','ఇ','ఈ','ఉ','ఊ','ఎ','ఏ','ఐ','ఒ','ఓ','ఔ','అం']
+    const word_vals = ['అమ్మ','ఆవు','ఇల్లు','ఈగ','ఉడుత','ఊయల','ఎలుక','ఏనుగు','ఐదు','ఒకటి','ఓడ','ఔను','అంచు']
+    const letter_select_element = document.getElementById("letter_select");
+    
+    function populate_options(select_element, options_list){
+        // Clear existing dynamic options (keeping the placeholder index 0)
+	    select_element.length = 1; 
+        //loop through options_list
+        options_list.forEach(option_val => {
+ 		const option = document.createElement("option");
+        // Assign value and text content
+ 		option.value = option_val
+		option.textContent = option_val;
+        // Append the option to the dropdown list
+		select_element.appendChild(option);
+        }); 
+    }
+    populate_options(letter_select_element, letter_vals)
+
+    function show_word() {
+        letter_index = letter_vals.indexOf(letter_select_element.value)
+        document.getElementById('show_word').innerHTML = (word_vals[letter_index])
+    }
+    
+    </script>
+</body>
+</html>
