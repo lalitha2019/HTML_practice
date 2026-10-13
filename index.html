@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>My HTML Practice</title>
+<style>
+    html, body{
+        height:100%;
+        width: 100%
+    }
+    .percent_iframe{
+       height:75%;
+       width:80%;
+    }
+    
+</style>
+
 </head>
 <body>
 
     <h1>Simple HTML exercises</h1>
-    <a href="date_picker.html">Accept date input from user</a>
+    <a href="date_picker.html" target="iframe_test">Accept date input from user</a>
     <p></p>
-    <a href="select_options_vowels.html">Allow user to select a Telugu vowel and show a word that begins with it</a>
+    <a href="select_options_vowels.html" target="iframe_test">Allow user to select a Telugu vowel and show a word that begins with it</a>
     <p></p>
-    <a href="select_options_colors.html">Allow user to select a color name and show Telugu equivalent of it</a>
+    <a href="select_options_colors.html" target="iframe_test">Allow user to select a color name and show Telugu equivalent of it</a>
+    <p></p>
+    <iframe src="iframe_blank.html" class="percent_iframe"  name="iframe_test" id="iframe_test" title="Iframe Test"></iframe>
 </body>
+
 </html>
